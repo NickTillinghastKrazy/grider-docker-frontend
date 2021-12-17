@@ -1,6 +1,11 @@
+language: generic 
+
 sudo: required 
 services: 
   - docker
 
 before_install:
   - docker build -t nicktillinghast/stephen-grider-frontend -f Dockerfile.dev . 
+ 
+script:
+  - docker run -e CI=true nicktillinghast/stephen-grider-frontend npm run test
